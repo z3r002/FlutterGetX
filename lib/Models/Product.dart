@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-List<Product> productFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
+List<Product> productFromJson(String str) =>
+    List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
-String productToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String productToJson(List<Product> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Product {
   Product({
@@ -24,18 +26,18 @@ class Product {
   String thumbnailUrl;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    albumId: json["albumId"],
-    id: json["id"],
-    title: json["title"],
-    url: json["url"],
-    thumbnailUrl: json["thumbnailUrl"],
-  );
+        albumId: json["albumId"],
+        id: json["id"],
+        title: json["title"],
+        url: json["url"],
+        thumbnailUrl: json["thumbnailUrl"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "albumId": albumId,
-    "id": id,
-    "title": title,
-    "url": url,
-    "thumbnailUrl": thumbnailUrl,
-  };
+        "albumId": albumId,
+        "id": id,
+        "title": title,
+        "url": url,
+        "thumbnailUrl": thumbnailUrl,
+      };
 }

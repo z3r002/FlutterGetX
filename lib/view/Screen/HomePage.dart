@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx/Controllers/productController.dart';
 import 'package:flutter_getx/view/Widgets/Card.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,15 +17,15 @@ class HomePage extends StatelessWidget {
               if (productController.isLoading.value)
                 return Center(child: CircularProgressIndicator());
               else
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 2,
+                return GridView.builder(
                   itemCount: productController.productList.length,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
                   itemBuilder: (context, index) {
                     return ProductTile(productController.productList[index]);
                   },
-                  staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16),
                 );
             }),
           )
